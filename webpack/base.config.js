@@ -1,14 +1,14 @@
-// We are using node's native package 'path'
-// https://nodejs.org/api/path.html
+const webpack = require('webpack');
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Constant with our paths
 const paths = {
-  DIST: path.resolve(__dirname, 'dist'),
-  SRC: path.resolve(__dirname, 'src'),
-  JS: path.resolve(__dirname, 'src/js'),
+  DIST: path.resolve(__dirname, '../dist'),
+  SRC: path.resolve(__dirname, '../src'),
+  JS: path.resolve(__dirname, '../src/js'),
 };
 
 // Webpack configuration
@@ -22,6 +22,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV',
+    ]),
   ],
   module: {
     rules: [
@@ -32,14 +35,17 @@ module.exports = {
           'babel-loader',
         ],
       },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'sass-loader',
+          ],
+        }),
+      },
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-  },
-  externals: {
-      // Use external version of React
-      "react": "React",
-      "react-dom": "ReactDOM"
-  },
+  }
 };
