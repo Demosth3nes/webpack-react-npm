@@ -5,7 +5,7 @@ export default class Hello extends Component {
   render() {
     return (
       <div>
-        Hello from reacts
+        Hello from react
       </div>
     );
   }
