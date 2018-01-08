@@ -7,13 +7,25 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-jest": "^22.0.4",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.8",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-to-json": "^3.3.0",
+    "eslint": "^4.15.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
+    "husky": "^0.14.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^22.0.4",
+    "lint-staged": "^6.0.0",
     "node-sass": "^4.7.2",
+    "prettier": "^1.9.2",
+    "regenerator-runtime": "^0.11.1",
     "sass-loader": "^6.0.6",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0",
@@ -22,9 +34,14 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack/dev.config.js && node-sass ./src/scss/index.scss ./src/css/index.css",
-    "build:npm": "babel src/js/app.js --out-file ./lib/bundle.js --source-maps inline --presets=react && node-sass ./src/scss/index.scss ./lib/css/index.css",
+    "build:npm": "babel src/js/app.js --out-file ./lib/bundle.js --source-maps inline --presets=react",
     "build:webpack": "webpack --config webpack/prod.config.js",
-    "sass": "node-sass -w ./src/scss/index.scss ./src/css/index.css"
+    "sass": "node-sass -w ./src/scss/index.scss ./src/css/index.css",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "precommit": "lint-staged",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -37,7 +54,39 @@
   },
   "homepage": "https://github.com/Demosth3nes/webpack-react-npm#readme",
   "dependencies": {
+    "eslint-plugin-react": "^7.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "./tests/jestsetup.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix"
+    ],
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
