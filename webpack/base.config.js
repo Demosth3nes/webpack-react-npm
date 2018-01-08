@@ -22,9 +22,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(paths.SRC, 'index.html'),
     }),
-    new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-    ]),
+    new ExtractTextPlugin('index.css'),
   ],
   module: {
     rules: [
@@ -37,12 +35,14 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          use: [
-            'sass-loader',
-          ],
-        }),
+        use: ExtractTextPlugin.extract(['css-loader', 'sass-loader']
+        ),
       },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract(['css-loader', 'sass-loader']
+        )
+      }
     ],
   },
   resolve: {

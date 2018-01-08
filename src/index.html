@@ -3,7 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-
+    <% for (var chunk of webpack.chunks) {
+            for (var file of chunk.files) {
+                if (file.match(/\.(js|css)$/)) { %>
+                    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+                <% }
+            }
+        } %>
     <title>Webpack Babel React</title>
   </head>
   <body>
