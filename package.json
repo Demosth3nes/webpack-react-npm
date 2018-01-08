@@ -2,8 +2,8 @@
   "name": "webpack-react-npm",
   "version": "1.0.0",
   "description": "Babel and React, bundled with Webpack for creating NPM modules",
-  "main": "src/js/app.js",
-  "module": "src/dist/js/bundle.js",
+  "main": "./lib/bundle.js",
+  "module": "./lib/bundle.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -21,9 +21,10 @@
     "webpack-merge": "^4.1.1"
   },
   "scripts": {
-    "start": "start http://localhost:3000/ && webpack-dev-server --config webpack/dev.config.js",
+    "start": "webpack-dev-server --config webpack/dev.config.js && node-sass ./src/scss/index.scss ./src/css/index.css",
     "build:npm": "babel src/js/app.js --out-file ./lib/bundle.js --source-maps inline --presets=react && node-sass ./src/scss/index.scss ./lib/css/index.css",
-    "build:webpack": "webpack --config webpack/prod.config.js"
+    "build:webpack": "webpack --config webpack/prod.config.js",
+    "sass": "node-sass -w ./src/scss/index.scss ./src/css/index.css"
   },
   "repository": {
     "type": "git",

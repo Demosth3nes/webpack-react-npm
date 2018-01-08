@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import styles from './css/index.css';
+import styles from '../scss/index.scss';
 
 export default class Hello extends Component {
   render() {
@@ -11,3 +11,5 @@ export default class Hello extends Component {
     );
   }
 }
+
+render(<Hello />, document.getElementById('app'));

@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const isProd = process.env.NODE_ENV === 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -13,7 +13,7 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
-  entry: path.join(paths.JS, 'app.js'),
+  entry: isProd ?  path.join(paths.JS, 'app.js') :  path.join(paths.JS, 'dev.js'),
   output: {
     path: paths.DIST,
     filename: 'app.bundle.js'
