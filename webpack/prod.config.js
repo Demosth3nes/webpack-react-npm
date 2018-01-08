@@ -9,11 +9,11 @@ module.exports = merge(baseConfig, {
   plugins: [
     // Extract imported CSS into own file
     new ExtractTextPlugin('[name].bundle.css'),
-    Minify JS
+    //Minify JS
     new UglifyJsPlugin({
       sourceMap: true
     }),
-    Minify CSS
+    //Minify CSS
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),
@@ -21,7 +21,8 @@ module.exports = merge(baseConfig, {
           'process.env': {
             NODE_ENV: JSON.stringify('production')
           }
-    })
+    }),
+    new CleanWebpackPlugin(['dist/*.*']),
   ],
   externals: {
       // Use external versions of React and ReactDOM

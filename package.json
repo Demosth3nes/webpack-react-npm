@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "start http://localhost:3000/ && webpack-dev-server --config webpack/dev.config.js",
-    "build:npm": "babel src/js/app.js --out-file ./dist/bundle.js --source-maps inline --presets=react && node-sass ./src/scss/index.scss ./dist/css/index.css",
+    "build:npm": "babel src/js/app.js --out-file ./lib/bundle.js --source-maps inline --presets=react && node-sass ./src/scss/index.scss ./lib/css/index.css",
     "build:webpack": "webpack --config webpack/prod.config.js"
   },
   "repository": {
