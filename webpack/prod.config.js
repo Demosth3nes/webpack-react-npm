@@ -23,7 +23,7 @@ module.exports = merge(baseConfig, {
             NODE_ENV: JSON.stringify('production')
           }
     }),
-    new CleanWebpackPlugin(['dist/*.*']),
+    new CleanWebpackPlugin(['demo/*.*']),
   ],
   externals: {
       // Use external versions of React and ReactDOM
