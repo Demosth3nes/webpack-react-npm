@@ -1,9 +1,5 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
-import styles from "./css/index.css";
+import HelloComponent from "./components/hello";
+import InputComponent from "./components/input";
 
-export default class Hello extends Component {
-  render() {
-    return <div>Hello from reacts test</div>;
-  }
-}
+export const Hello = HelloComponent;
+export const Input = InputComponent;

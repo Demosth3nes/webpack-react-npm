@@ -3,14 +3,23 @@
     "react",
     "jsx-a11y"
   ],
-  "extends": [
-    "plugin:jsx-a11y/recommended"
-  ],
+  "extends": ["plugin:jsx-a11y/recommended"],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es6": true
+  },
   "parserOptions": {
-      "ecmaVersion": 7,
-      "sourceType": "module",
-      "ecmaFeatures": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
           "jsx": true,
       }
+  },
+  "rules": {
+    "no-console": "off",
+    "strict": ["error", "global"],
+    "curly": "warn"
   }
 }
