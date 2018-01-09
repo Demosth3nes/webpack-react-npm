@@ -24,10 +24,5 @@ module.exports = merge(baseConfig, {
           }
     }),
     new CleanWebpackPlugin(['demo/*.*']),
-  ],
-  externals: {
-      // Use external versions of React and ReactDOM
-      "react": "React",
-      "react-dom": "ReactDOM"
-  },
+  ]
 });

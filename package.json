@@ -16,6 +16,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.8",
+    "del-cli": "^1.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.0",
@@ -28,6 +29,7 @@
     "jest": "^22.0.4",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
     "prettier": "^1.9.2",
     "regenerator-runtime": "^0.11.1",
     "sass-loader": "^6.0.6",
@@ -37,15 +39,18 @@
     "webpack-merge": "^4.1.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack/dev.config.js && node-sass ./src/scss/index.scss ./src/css/index.css",
-    "build:npm": "del-cli lib/**/ && mkdir lib && babel src/js/ --out-dir ./lib/  --ignore src/js/dev.js && node-sass ./src/scss/index.scss ./lib/css/index.css",
+    "start": "start http://localhost:3000 && webpack-dev-server --config webpack/dev.config.js",
+    "build:npm": "npm-run-all clean:lib babel:npm sass:npm",
     "build:webpack": "webpack --config webpack/prod.config.js",
     "sass": "node-sass -w ./src/scss/index.scss ./src/css/index.css",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
-    "lint": "eslint ./src/js/*.js"
+    "lint": "eslint ./src/js/*.js",
+    "clean:lib": "del-cli ./lib/*.*/",
+    "babel:npm": "babel src/js/ --out-dir ./lib/ --ignore src/js/dev.js",
+    "sass:npm": "node-sass ./src/scss/index.scss ./lib/css/index.css"
   },
   "repository": {
     "type": "git",
