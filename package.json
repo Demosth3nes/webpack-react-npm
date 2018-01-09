@@ -48,7 +48,7 @@
     "test:coverage": "jest --coverage",
     "precommit": "lint-staged",
     "lint": "eslint ./src/js/*.js",
-    "clean:lib": "del-cli ./lib/*.*/",
+    "clean:lib": "del-cli ./lib/*",
     "babel:npm": "babel src/js/ --out-dir ./lib/ --ignore src/js/dev.js",
     "sass:npm": "node-sass ./src/scss/index.scss ./lib/css/index.css"
   },
