@@ -38,3 +38,4 @@ To run Jest and check the coverage you can run
 
 # Utils - Global variable's and functions
 
+(For future reference)
