@@ -1,5 +1,3 @@
-import HelloComponent from "./components/hello";
-import InputComponent from "./components/input";
+import HelloComponent from "./components/Hello";
 
 export const Hello = HelloComponent;
-export const Input = InputComponent;

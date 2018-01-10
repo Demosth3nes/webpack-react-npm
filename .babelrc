@@ -1,8 +1,1 @@
-{
-  "presets": [
-    "react"
-  ],
-  "plugins": [
-    "transform-react-display-name"
-  ]
-}
+{ "presets": ["es2015", "react"] }
