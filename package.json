@@ -95,7 +95,7 @@
     ],
     "src/**/*.js": [
       "prettier --write",
-      "test:coverage --bail --findRelatedTests",
+      "test --bail --findRelatedTests",
       "git add"
     ]
   }

@@ -1,6 +1,6 @@
 # Webpack-React-NPM
 
-This package can be used to create React NPM packages. It consists of **Webpack**, **Babel**, **Eslint**, **Jest** (with enzyme) and a precommit hook to ensure a coverage level is met. For good measure **prettier** is also included to ensure that code is well presented.
+This package can be used to create React NPM packages. It consists of **Webpack**, **Babel**, **Eslint**, **Jest** (with enzyme) and a precommit hook for jest tests. For good measure **prettier** is also included to ensure that code is well presented.
 
 # Usage
 For **development**:
